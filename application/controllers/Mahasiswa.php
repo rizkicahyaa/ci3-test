@@ -39,4 +39,9 @@ class Mahasiswa extends CI_Controller {
         $this->load->view('edit', $data);
     }
 
+	public function delete($id)
+    {
+        $this->Model_mahasiswa->delete($id);
+        redirect('mahasiswa');
+    }
 }

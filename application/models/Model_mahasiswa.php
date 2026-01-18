@@ -16,4 +16,8 @@ class Model_mahasiswa extends CI_Model {
     public function update($id, $data) {
         return $this->db->update('users', $data, ['id' => $id]);
     }
+
+    public function delete($id) {
+        return $this->db->where('id', $id)->delete('users');
+    }
 }

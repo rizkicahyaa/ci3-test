@@ -29,7 +29,7 @@
             <td><?= $m->jurusan ?></td>
             <td>
                 <a href="<?= base_url('mahasiswa/edit/'.$m->id) ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="<?= base_url('mahasiswa/hapus/'.$m->id) ?>" 
+                <a href="<?= base_url('mahasiswa/delete/'.$m->id) ?>" 
                 class="btn btn-danger btn-sm"
                 onclick="return confirm('Yakin hapus data?')">Hapus</a>
             </td>

@@ -14,5 +14,12 @@ class Mahasiswa extends CI_Controller {
 		$this->load->view('index', $data);
 	}
 
+	public function add() {
+		if ($this->input->post()) {
+			$this->Model_mahasiswa->insert($this->input->post());
+			redirect('');
+		}
 
+		$this->load->view('tambah');
+	}
 }

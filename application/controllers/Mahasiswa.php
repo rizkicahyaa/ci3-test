@@ -22,4 +22,21 @@ class Mahasiswa extends CI_Controller {
 
 		$this->load->view('tambah');
 	}
+
+	public function edit($id)
+    {
+        if ($this->input->post()) {
+            $data = [
+                'name' => $this->input->post('name'),
+				'email' => $this->input->post('email'),
+                'jurusan' => $this->input->post('jurusan')
+            ];
+            $this->Model_mahasiswa->update($id, $data);
+            redirect('mahasiswa');
+        }
+
+        $data['mhs'] = $this->Model_mahasiswa->get_by_id($id);
+        $this->load->view('edit', $data);
+    }
+
 }

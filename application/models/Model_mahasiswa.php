@@ -8,4 +8,12 @@ class Model_mahasiswa extends CI_Model {
     public function insert($data) {
         return $this->db->insert('users', $data);
     }
+
+    public function get_by_id($id) {
+        return $this->db->get_where('users', ['id' => $id])->row();
+    }
+
+    public function update($id, $data) {
+        return $this->db->update('users', $data, ['id' => $id]);
+    }
 }

@@ -1,10 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mahasiswa extends CI_Controller {
+/**
+ * @property Model_mahasiswa $Model_mahasiswa
+ */
+
+class Mahasiswa extends CI_Controller {	
 	public function __construct()
 	{
 		parent::__construct();
+
+		if (!$this->session->userdata('login')) {
+			redirect('auth/login');
+		}
+
 		$this->load->model("Model_mahasiswa");
 	}
 
@@ -16,7 +25,12 @@ class Mahasiswa extends CI_Controller {
 
 	public function add() {
 		if ($this->input->post()) {
-			$this->Model_mahasiswa->insert($this->input->post());
+			$data = $this->input->post();
+			// Set default password '123456' if not provided, or hash the provided one
+			$raw_password = $this->input->post('password') ? $this->input->post('password') : '123456';
+			$data['password'] = md5($raw_password);
+			
+			$this->Model_mahasiswa->insert($data);
 			redirect('');
 		}
 

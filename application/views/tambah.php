@@ -24,6 +24,11 @@
     </div>
 
     <div class="mb-3">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Default: 123456" required>
+    </div>
+
+    <div class="mb-3">
         <label>Jurusan</label>
         <input type="text" name="jurusan" class="form-control" required>
     </div>
